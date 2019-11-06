@@ -5,7 +5,7 @@ Use this `REAMDE.md` file to describe your final project (as detailed on Canvas)
 Reason why we are interested in the topic: 
 We wanted to implement the data analysis skills we've learned in class and apply it to real world business scenarios. Also, our team is particularly interested in marketing,advertising and finance. 
 
-###Example 1: User profiling
+### Example 1: User profiling
 
 url-link: https://www.business2community.com/marketing/3-great-examples-of-data-science-in-marketing-02052176
 
