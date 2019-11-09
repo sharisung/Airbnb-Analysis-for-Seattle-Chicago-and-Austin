@@ -18,11 +18,5 @@ Data-driven questions we hope to answer about this domain: We want to figure out
 
 url-link: https://data.world/ahalps/social-influence-on-shopping
 
-This dataset is from a social media survey from 'Whatsgooly'. 1500,000 people from different age groups answer questions about which platforms influence their online shopping habits. From this data, we want to investigate the overall effectiveness of digital marketing, which age groups it has the most influence on, which platforms do the best job of advertising and what makes their platform a better for digital marketing. These questions can be answered by looking into the various platforms used by different age groups and the sale rate of these platforms for products that they advertise.
-
-
-
-
-
-
+This dataset is from a social media survey from 'Whatsgooly'. People from different age groups answer questions about which platforms influence their online shopping habits. From this data, we want to investigate the overall effectiveness of digital marketing, which age groups it has the most influence on, which platforms do the best job of advertising and what makes their platform a better for digital marketing. These questions can be answered by looking into the various platforms used by different age groups and the sale rate of these platforms for products that they advertise. The dataset has 6 features and 1450 observations. 
 
