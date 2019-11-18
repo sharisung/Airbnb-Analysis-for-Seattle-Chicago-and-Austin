@@ -10,9 +10,25 @@ source("analysis.R")
 library("knitr")
 ```
 
-Here are the airbnbs that have the **top ten highest rating** near Pike Place Market in 2019. These hosts have been verified as superhosts, have a 100% response rate, responses within an hour, and have their real identity verified through by Airbnb officials. 
+## Purpose of the project
+We wanted to analyze airbnb data from ten major cities in the United States collected in 2019 to come up with a specific airbnb tourist guide that could give travelers more insights on which airbnb to choose and which host they could rely on.
+
+## Source of the data of the project
+Source of data collected: http://insideairbnb.com/get-the-data.html
+
+
+## Aggregated chart 
+Here are the airbnbs hosts that have the **top ten highest rating** near Pike Place Market in 2019. These hosts have been verified as superhosts, have a 100% response rate, responses within an hour, and have their real identity verified through by Airbnb officials. 
 
 ```{r best_hosts_near_pike, echo = FALSE}
 # Show the top 10 table (specifying the column names to display)
-kable(best_hosts_near_pike, col.names = c("Host Name", "Item Name", "Host Ratings"))
+kable(best_hosts_near_pike,
+      col.names = c("Host Name", "Item Name", "Host Ratings"))
 ```
+
+## Interactive map 
+```{r map, echo=FALSE}
+source("airbnb_project_interactive_map.R")
+map
+```
+The reason why we wanted to use an interactive graph is because we wanted to show to location of each airbnb listing and the neccessary information tied to the listings, such as the house owner of the listing, price per night and room type, etc.
