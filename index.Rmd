@@ -1,15 +1,18 @@
-# An introduction of the problem domain and dataset (feel free to borrow language you used in your brainstorm assignment)
+---
+title: "Summarizing table"
+author: "Shari Sung"
+date: "11/17/2019"
+output: html_document
+---
 
-# A paragraph of summary information, citing at least 5 values calculated from the data
+```{r setup, include = FALSE}
+source("analysis.R")
+library("knitr")
+```
 
-# A table of  aggregated data (e.g., that has been "grouped" by one of your features)
+Here are the airbnbs that have the **top ten highest rating** near Pike Place Market in 2019. These hosts have been verified as superhosts, have a 100% response rate, responses within an hour, and have their real identity verified through by Airbnb officials. 
 
-# Three charts that display information from the data (what you visualize is up to you)
-
-
-intro para
-summary paragraph + summary calc functions 
-summary aggregated table
-
-
-
+```{r best_hosts_near_pike, echo = FALSE}
+# Show the top 10 table (specifying the column names to display)
+kable(best_hosts_near_pike, col.names = c("Host Name", "Item Name", "Host Ratings"))
+```
