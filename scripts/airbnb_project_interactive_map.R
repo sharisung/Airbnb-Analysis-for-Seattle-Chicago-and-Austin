@@ -4,7 +4,9 @@ library(ggplot2)
 library("plotly")
 library(leaflet)
 
+# Interactive Map
 seattle_listing <- read.csv("data/seattle_listings.csv",stringsAsFactors = FALSE)
+interactive_map_function <- function(seattle_listing){
 map <- leaflet(seattle_listing) %>%
     addTiles() %>%
     addProviderTiles("CartoDB.Positron") %>%
@@ -35,3 +37,4 @@ leaflet(data = locations) %>%
         lng = ~ longitude,
         popup = ~label,
     )
+}
