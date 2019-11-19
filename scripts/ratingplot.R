@@ -1,8 +1,11 @@
 library(ggplot2)
-city_neighborhood_ratings <- function(city_dataset) {
-  data <- city_dataset
-  # group by neighbourhood
-  # get rating column
-  # distance to seattle column
-  # graph x and y scatter with distance to seattle downtown as x increases
+library(dplyr)
+num_listings_by_neighbourhood <- function(dataset) {
+  data_to_use <- dataset %>% 
+    group_by(neighborhood_cleansed) %>% 
+    summarise(n = n())
+  ggplot(data = data_to_use) +
+    geom_point(
+      mapping = aes(x = neighborhood_cleansed, y = n)
+    )
 }
