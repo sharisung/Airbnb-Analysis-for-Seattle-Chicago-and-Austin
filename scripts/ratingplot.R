@@ -1,12 +1,17 @@
-dataset <- read.csv("data/seattle_listings.csv", stringsAsFactors = FALSE)
+setwd("/Users/Yash/Desktop/final-Jackzzzzz")
+data <- read.csv("data/listings.csv", stringsAsFactors = FALSE)
 library(ggplot2)
 library(dplyr)
-num_listings_by_neighbourhood <- function(dataset) {
-  data_to_use <- dataset %>% 
-    group_by(neighborhood_cleansed) %>% 
+num_listings_by_neighbourhood <- function(data) {
+  to_use <- data %>% 
+    group_by(neighbourhood_cleansed) %>% 
     summarise(n = n())
-  ggplot(data = data_to_use) +
+  ggplot(data = to_use) + 
     geom_point(
-      mapping = aes(x = neighborhood_cleansed, y = n)
+      mapping = aes(x = to_use$neighbourhood_cleansed, y = n)
     )
 }
+
+
+
+

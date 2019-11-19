@@ -1,13 +1,9 @@
-data <- read.csv("data/seattle_listings.csv", stringsAsFactors = FALSE)
+setwd("/Users/Yash/Desktop/final-Jackzzzzz")
+data <- read.csv("data/listings.csv", stringsAsFactors = FALSE)
 # A function that takes in a dataset and returns a list of info about it:
 get_summary_info <- function(data) {
   # Number of airbnb hosts in the city
-  total_hosts <- data %>% 
-    select(host_id)
-    unique() %>% 
-    length() %>% 
-    as.numeric()
-  #as.numeric(length(unique(dataset$host_id)))
+  total_hosts <- as.numeric(length(unique(data$host_id)))
   
   # Neighbourhood with most number of AirBnb listings
   most_popular_neighbourhood <- data %>% 
