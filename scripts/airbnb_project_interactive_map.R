@@ -20,5 +20,6 @@ map <- leaflet(seattle_listing) %>%
                        "Room Type:", room_type, "<br>"),
         radius = ~0.5,
         fillOpacity = 0.5,
-    )
+      )
+  return(map)
 }
