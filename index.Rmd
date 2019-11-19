@@ -24,13 +24,13 @@ Here are the airbnbs hosts that have the **top ten highest rating** near Pike Pl
 
 ```{r best_hosts_near_pike, echo = FALSE}
 # Show the top 10 table (specifying the column names to display)
-kable(best_hosts_near_pike,
+kable(aggregated_function(seattle_big_listing),
       col.names = c("Host Name", "Item Name", "Host Ratings"))
 ```
 
 ## Interactive map 
 ```{r map, echo=FALSE}
-map
+interactive_map_function(seattle_listing)
 ```
 The reason why we wanted to use an interactive graph is because we wanted to show to location of each airbnb listing and the neccessary information tied to the listings, such as the house owner of the listing, price per night and room type, etc.
 
