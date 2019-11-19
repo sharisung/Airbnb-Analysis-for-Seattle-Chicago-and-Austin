@@ -1,4 +1,4 @@
-# Seattle
+# Aggregated table for Seattle 
 library(dplyr)
 library(ggplot2)
 library("plotly")
