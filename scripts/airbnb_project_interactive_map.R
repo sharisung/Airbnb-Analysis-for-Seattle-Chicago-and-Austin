@@ -1,7 +1,10 @@
 # Interactive Map
+library(dplyr)
+library(ggplot2)
+library("plotly")
+library(leaflet)
 
 seattle_listing <- read.csv("data/seattle_listings.csv",stringsAsFactors = FALSE)
-# interactive map
 map <- leaflet(seattle_listing) %>%
     addTiles() %>%
     addProviderTiles("CartoDB.Positron") %>%
