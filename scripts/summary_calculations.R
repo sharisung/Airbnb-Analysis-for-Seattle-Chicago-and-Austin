@@ -1,3 +1,4 @@
+data <- read.csv("data/seattle_listings.csv", stringsAsFactors = FALSE)
 # A function that takes in a dataset and returns a list of info about it:
 get_summary_info <- function(data) {
   # Number of airbnb hosts in the city
