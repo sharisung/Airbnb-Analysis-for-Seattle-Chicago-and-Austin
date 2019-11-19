@@ -1,4 +1,4 @@
-# Aggregated table for Seattle 
+# Seattle
 library(dplyr)
 library(ggplot2)
 library("plotly")
@@ -6,6 +6,8 @@ library(leaflet)
 
 seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
                                 stringsAsFactors = FALSE)
+# create the function
+aggregated_function <- function(seattle_big_listing) {
 
 best_hosts_near_pike <-
     seattle_big_listing %>%
@@ -18,3 +20,4 @@ best_hosts_near_pike <-
     top_n(15, wt = review_scores_rating) %>%
     arrange(-review_scores_rating) %>%
     select(host_name, name, review_scores_rating)
+}
