@@ -3,38 +3,20 @@ library(dplyr)
 library(ggplot2)
 library("plotly")
 library(leaflet)
+seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
+                                stringsAsFactors = FALSE)
+# create the function
+aggregated_function <- function(seattle_big_listing) {
 
-# Interactive Map
-seattle_listing <- read.csv("data/seattle_listings.csv",stringsAsFactors = FALSE)
-interactive_map_function <- function(seattle_listing){
-map <- leaflet(seattle_listing) %>%
-    addTiles() %>%
-    addProviderTiles("CartoDB.Positron") %>%
-    addCircles(
-        lat = ~latitude,
-        lng = ~longitude,
-        stroke = FALSE,
-        popup = ~paste("Host name:", host_name, "<br>",
-                       "Listing name:", name, "<br>",
-                       "Price: $", price, "per night", "<br>",
-                       "Room Type:", room_type, "<br>"),
-        radius = ~0.5,
-        fillOpacity = 0.5,
-    )
-
-# Create the points labeling UW on the graph
-locations <- data.frame(
-    label = c("University of Washington"),
-    latitude = c(47.6553),
-    longitude = c(-122.3035)
-)
-
-leaflet(data = locations) %>%
-    addProviderTiles("CartoDB.Positron") %>%
-    setView(lng = -122.3321, lat = 47.6062, zoom = 11) %>%
-    addMarkers(
-        lat = ~latitude,
-        lng = ~ longitude,
-        popup = ~label,
-    )
+best_hosts_near_pike <-
+    seattle_big_listing %>%
+    filter(host_is_superhost == "t",
+           host_response_rate == "100%",
+           host_response_time == "within an hour",
+           host_identity_verified == "t",
+           host_has_profile_pic == "t",
+           zipcode == "98101") %>%
+    top_n(15, wt = review_scores_rating) %>%
+    arrange(-review_scores_rating) %>%
+    select(host_name, name, review_scores_rating)
 }
