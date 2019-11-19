@@ -20,7 +20,10 @@ We wanted to analyze airbnb data from ten major cities in the United States coll
 Source of data collected: http://insideairbnb.com/get-the-data.html
 
 ## Summary
-The data collected from the Seattle Airbnb dataset provides a good guide for accomodation in the city. In total, there are `r get_summary_info(data)[1]` in the city. Although they are all welcoming, the neighbourhood that stands out with the most number of Airbnb listings is `r get_summary_info(data)[2]`. The most popular type of property listed on Airbnb for this area is `r get_summary_info(data)[3]`. The average price for accomodation in this area would be around `r get_summary_info(data)[4]` with an average rating of `r get_summary_info(data)[1]`.  
+```{r summary_calculations, echo = FALSE} 
+info <- get_summary_info(data)
+```
+The data collected from the Seattle Airbnb dataset provides a good guide for accomodation in the city. In total, there are `r info[1]` in the city. Although they are all welcoming, the neighbourhood that stands out with the most number of Airbnb listings is `r info[2]`. The most popular type of property listed on Airbnb for this area is `r info[3]`. The average price for accomodation in this area would be around `r info[4]` with an average rating of `r info[5]`.
 
 
 ## Aggregated chart 

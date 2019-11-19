@@ -1,3 +1,4 @@
+dataset <- read.csv("data/seattle_listings.csv", stringsAsFactors = FALSE)
 library(ggplot2)
 library(dplyr)
 num_listings_by_neighbourhood <- function(dataset) {
