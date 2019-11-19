@@ -6,8 +6,8 @@ output: html_document
 ---
 
 ```{r setup, include = FALSE}
-source("analysis.R")
-source("airbnb_project_interactive_map.R")
+source("scripts/analysis.R")
+source("scripts/airbnb_project_interactive_map.R")
 source("scripts/chart.R")
 library("knitr")
 ```
