@@ -38,4 +38,4 @@ The reason why we wanted to use an interactive graph is because we wanted to sho
 source("scripts/chart.R")
 bar_chart_function(data)
 ```
-This chart contains infomation of each neibourhood's average aribnb price. It's very helpful when people are planning their travle budget. You can search for housing result in different neibourhoods based on your budget. The average aribnb price in Downtown is the most expensive in Seattle which is $288.4471 per night and Delridge is the least expensive with only $100.6805 per night.
+This chart contains infomation of each neibourhood's average aribnb price. It's very helpful when people are planning their travel budget. You can search for housing result in different neigbourhoods based on your budget. The average airbnb price in Downtown is the most expensive in Seattle which is $288.4471 per night and Delridge is the least expensive with only $100.6805 per night.
