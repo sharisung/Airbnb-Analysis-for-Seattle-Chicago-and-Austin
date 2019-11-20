@@ -1,6 +1,6 @@
 ---
 title: "Midpoint Deliverable"
-author: "Shari Sung" "Xin Zhang"
+author: "Shari Sung, Xin Zhang, Yash Raj Sinha"
 date: "11/17/2019"
 output: html_document
 ---
@@ -10,7 +10,10 @@ source("scripts/analysis.R")
 source("scripts/summary_calculations.R")
 source("scripts/airbnb_project_interactive_map.R")
 source("scripts/chart.R")
-library("knitr")
+source("scripts/ratingplot.R")
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
 ```
 
 ## Purpose of the project
@@ -20,8 +23,8 @@ We wanted to analyze airbnb data from ten major cities in the United States coll
 Source of data collected: http://insideairbnb.com/get-the-data.html
 
 ## Summary
-```{r summary_calculations, echo = FALSE, warning = FALSE} 
-info <- get_summary_info(data)
+```{r summary_calculations, echo = FALSE, warning = FALSE, include = FALSE} 
+info
 ```
 The data collected from the Seattle Airbnb dataset provides a good guide for accomodation in the city. In total, there are `r info[1]` in the city. Although they are all welcoming, the neighbourhood that stands out with the most number of Airbnb listings is `r info[2]`. The most popular type of property listed on Airbnb for this area is `r info[3]`. The average price for accomodation in this area would be around `r info[4]` with an average rating of `r info[5]`.
 
@@ -37,18 +40,19 @@ kable(aggregated_function(seattle_big_listing),
 
 ## Interactive map 
 ```{r map, echo=FALSE}
-interactive_map_function(seattle_listing)
+map
 ```
 The reason why we wanted to use an interactive graph is because we wanted to show to location of each airbnb listing and the neccessary information tied to the listings, such as the house owner of the listing, price per night and room type, etc.
 
 ## Bar Graph
 ```{r bar_chart, echo=FALSE}
-bar_chart_function(data)
+chart
 ```
 This chart contains infomation of each neibourhood's average aribnb price. It's very helpful when people are planning their travel budget. You can search for housing result in different neigbourhoods based on your budget. The average airbnb price in Downtown is the most expensive in Seattle which is $288.4471 per night and Delridge is the least expensive with only $100.6805 per night.
 
 ## Scatter Plot
 ```{r num_listings_by_neighbourhood, echo=FALSE}
-num_listings_by_neighbourhood(data)
+scatter_plot
 ```
+
 This plot shows the number of listings for each neighbourhood. It gives a customer a good idea as to where popular listings are and good places to look at for accomadation.

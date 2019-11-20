@@ -23,3 +23,4 @@ map <- leaflet(seattle_listing) %>%
       )
   return(map)
 }
+map <- interactive_map_function(seattle_listing)

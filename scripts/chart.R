@@ -31,3 +31,4 @@ bar_chart_function <- function(data) {
     )
   return(plot)
 }
+chart <- bar_chart_function(data)

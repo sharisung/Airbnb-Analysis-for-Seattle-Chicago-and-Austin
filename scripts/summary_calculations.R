@@ -46,3 +46,5 @@ get_summary_info <- function(data) {
   )
   return (ret)
 }
+
+info <- get_summary_info(data)
