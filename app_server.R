@@ -11,10 +11,7 @@ seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
 server <- function(input, output) {
     output$interactive_seattle <-renderLeaflet({
         map_filtered_data <-seattle_big_listing %>%
-        filter(property_type == input$input_property, zipcode == input$zip_input)
-        
-        print(map_filtered_data)
-        
+        filter(property_type == input$input_property, zipcode == input$zip_input)        
         leaflet(map_filtered_data) %>%
         addTiles() %>%
         addProviderTiles("CartoDB.Positron") %>%
