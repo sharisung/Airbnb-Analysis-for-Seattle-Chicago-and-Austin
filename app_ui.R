@@ -19,8 +19,27 @@ map_sidebar_content <- sidebarPanel(
     "Apartment",
     "Condominium"),
     selected = "Apartment"
+    ),
+    checkboxInput(
+        "superhosts",
+        label = "Superhosts?",
+        value = FALSE,
+    ),
+    sliderInput(
+        "num_guests",
+        label = "Number of Guests",
+        min = 0,
+        max = 8, # how to link data file here
+        value = 1
+    ),
+    sliderInput(
+        "price_range",
+        label = "Price Range per Night",
+        min = 35, # how to link data file here
+        max = 2500,# how to link data file here
+        value = 250
     )
-)
+) 
 
 map_main_content <- mainPanel(
     leafletOutput("interactive_seattle")
@@ -38,11 +57,3 @@ ui <- navbarPage(
     "Airbnb Dataset",
     map_panel
 )
-
-
-
-
-
-
-
-
