@@ -89,6 +89,7 @@ ui <- navbarPage(
     "Airbnb Dataset",
     introduction,
     map_panel,
-    bar_panel
+    bar_panel,
+    tabPanel("Conclusion", mainPanel(uiOutput("conclusion")))
 )
 
