@@ -5,24 +5,29 @@ library(tidyr)
 library(leaflet)
 library(ggplot2)
 library(scales)
+source("global.R")
+data <- seattle_data %>% 
+    mutate(
+        price_val = as.numeric(substr(seattle_data$price, 2, length(seattle_data$price))),
+        superhost_val = ifelse(seattle_data$host_is_superhost == "t", TRUE, FALSE)
+        )
 
-seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
-                                stringsAsFactors = FALSE)
+#seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
+                                #stringsAsFactors = FALSE)
 
-data <- read.csv("seattle_listings.csv", stringsAsFactors = FALSE)
+#data <- read.csv("seattle_listings.csv", stringsAsFactors = FALSE)
 plot_info <- data %>%
-    group_by(neighbourhood_group) %>%
-    summarise(total = mean(price))
+    group_by(neighbourhood_group_cleansed) %>%
+    summarise(total = mean(price_val))
 
 server <- function(input, output) {
-    output$seattle_big_listing <- seattle_big_listing
     output$interactive_seattle <- renderLeaflet({
-        map_filtered_data <- seattle_big_listing %>%
+        map_filtered_data <- data %>%
         filter(property_type == input$input_property, 
                zipcode == input$zip_input,
                accommodates == input$num_guests,
-               host_is_superhost == ifelse(input$superhost, "f", "t"),
-               price == input$price_range
+               superhost_val == input$superhost,
+               #price_val == input$price_range
                )        
         leaflet(map_filtered_data) %>%
         addTiles() %>%
@@ -43,13 +48,13 @@ server <- function(input, output) {
     #Building Bar Chart
     select_neighbourhood <- reactive ({
         new_data <- plot_info %>%
-            filter(neighbourhood_group == input$checkGroup)
+            filter(neighbourhood_group_cleansed == input$checkGroup)
         return(new_data)
     })
     
     output$bar <- renderPlotly({
         bar_chart <- ggplot(select_neighbourhood()) +
-            geom_col(mapping = aes(x = neighbourhood_group,
+            geom_col(mapping = aes(x = neighbourhood_group_cleansed,
                                    y = total)) +
             labs(x = "Neighbourhoods",
                  y = "Average Price Per Night",

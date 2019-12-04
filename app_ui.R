@@ -4,7 +4,7 @@ library(dplyr)
 library(tidyr)
 library(leaflet)
 library(ggplot2)
-
+source("global.R")
 introduction <- tabPanel(
 "Introduction",
 h1("Introduction for the Project"),
@@ -38,16 +38,17 @@ map_sidebar_content <- sidebarPanel(
     sliderInput(
         "num_guests",
         label = "Number of Guests",
-        min = min(),
-        max = 8, # how to link data file here
-        value = 1
+        min = 1,
+        max = max(seattle_data$accommodates, na.rm = TRUE),
+        value = 1,
+        step = 1
     ),
     sliderInput(
         "price_range",
         label = "Price Range per Night",
-        min = min(data), # how to link data file here
-        max = 2500,# how to link data file here
-        value = 250
+        min = min(data$price_val, na.rm = TRUE),
+        max = max(data$price_val, na.rm = TRUE),
+        value = mean(data$price_val, na.rm = TRUE)
     )
 ) 
 
@@ -67,7 +68,7 @@ map_panel <- tabPanel(
 barchart_side <- sidebarPanel(
     checkboxGroupInput("checkGroup",
                        label = h3("Select Neighbourhoods"),
-                       choices = as.list(plot_info$neighbourhood_group),
+                       choices = as.list(plot_info$neighbourhood_group_cleansed),
                        selected = "Downtown"))
 
 
