@@ -65,20 +65,43 @@ map_panel <- tabPanel(
     )
 )
 
-barchart_side <- sidebarPanel(
+
+seattle_barchart_side <- sidebarPanel(
     checkboxGroupInput("checkGroup",
                        label = h3("Select Neighbourhoods"),
                        choices = as.list(plot_info$neighbourhood_group_cleansed),
                        selected = "Downtown"))
 
 
-bar_panel <- tabPanel (
+seattle_bar_panel <- tabPanel (
     "Average Price In Neighbourhoods",
     titlePanel("Average Price For One Night In Different Neighbourhoods"),
     p("How does the average price in different neighbourhoods different?
     This page will show a clear comparison wih selected neighbourhood gorups."),
-    barchart_side,
+    seattle_barchart_side,
     mainPanel(plotlyOutput("bar")),
+    helpText(
+        "If you compare the average price per night in different neighbourhoods, 
+    you will find that Downtown Seattle has the highest average price pernight
+    of 288 comparing against all other neighbourhoods.On the other hand, University
+    District has the lowest average price per night of 104."
+    ))
+
+
+chicago_barchart_side <- sidebarPanel(
+    checkboxGroupInput("checkGroup_chicago",
+                       label = h3("Select Neighbourhoods"),
+                       choices = as.list(plot_info_chicago$neighbourhood_cleansed),
+                       selected = "Albany Park"))
+
+
+chicago_bar_panel <- tabPanel (
+    "Average Price In Neighbourhoods In Chicago",
+    titlePanel("Average Price For One Night In Different Neighbourhoods"),
+    p("How does the average price in different neighbourhoods different in Chicago?
+    This page will show a clear comparison wih selected neighbourhood gorups."),
+    chicago_barchart_side,
+    mainPanel(plotlyOutput("bar_chicago")),
     helpText(
         "If you compare the average price per night in different neighbourhoods, 
     you will find that Downtown Seattle has the highest average price pernight
@@ -90,7 +113,8 @@ ui <- navbarPage(
     "Airbnb Dataset",
     introduction,
     map_panel,
-    bar_panel,
+    seattle_bar_panel,
+    chicago_bar_panel,
     tabPanel("Conclusion", mainPanel(uiOutput("conclusion")))
 )
 
