@@ -5,6 +5,16 @@ library(tidyr)
 library(leaflet)
 library(ggplot2)
 
+introduction <- tabPanel(
+"Introduction",
+h1("Introduction for the Project"),
+h3(" We wanted to provide a travel guide on ten major cities in the United States for travelers, so they could 
+   figure out which airbnb listing they want to live in based on price, room type and the number of
+   guests they have."),
+h4("source of data collected: http://insideairbnb.com/get-the-data.html"),
+img(src = "AirbnbLogo.jpeg", width="40%", height ="30%")
+)
+
 map_sidebar_content <- sidebarPanel(
     numericInput(
         "zip_input",
@@ -55,5 +65,7 @@ map_panel <- tabPanel(
 )
 ui <- navbarPage(
     "Airbnb Dataset",
+    introduction,
     map_panel
 )
+
