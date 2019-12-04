@@ -9,9 +9,15 @@ seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
                                 stringsAsFactors = FALSE)
 
 server <- function(input, output) {
-    output$interactive_seattle <-renderLeaflet({
+    output$seattle_big_listing <- seattle_big_listing
+    output$interactive_seattle <- renderLeaflet({
         map_filtered_data <- seattle_big_listing %>%
-        filter(property_type == input$input_property, zipcode == input$zip_input)        
+        filter(property_type == input$input_property, 
+               zipcode == input$zip_input,
+               accommodates == input$num_guests,
+               host_is_superhost == ifelse(input$superhost, "f", "t"),
+               price == input$price_range
+               )        
         leaflet(map_filtered_data) %>%
         addTiles() %>%
         addProviderTiles("CartoDB.Positron") %>%
@@ -28,6 +34,3 @@ server <- function(input, output) {
         )
     })
 }
-
-
-
