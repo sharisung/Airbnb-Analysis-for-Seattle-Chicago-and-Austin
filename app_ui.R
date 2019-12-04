@@ -63,9 +63,32 @@ map_panel <- tabPanel(
         map_main_content
     )
 )
+
+barchart_side <- sidebarPanel(
+    checkboxGroupInput("checkGroup",
+                       label = h3("Select Neighbourhoods"),
+                       choices = as.list(plot_info$neighbourhood_group),
+                       selected = "Downtown"))
+
+
+bar_panel <- tabPanel (
+    "Average Price In Neighbourhoods",
+    titlePanel("Average Price For One Night In Different Neighbourhoods"),
+    p("How does the average price in different neighbourhoods different?
+    This page will show a clear comparison wih selected neighbourhood gorups."),
+    barchart_side,
+    mainPanel(plotlyOutput("bar")),
+    helpText(
+        "If you compare the average price per night in different neighbourhoods, 
+    you will find that Downtown Seattle has the highest average price pernight
+    of 288 comparing against all other neighbourhoods.On the other hand, University
+    District has the lowest average price per night of 104."
+    ))
+
 ui <- navbarPage(
     "Airbnb Dataset",
     introduction,
-    map_panel
+    map_panel,
+    bar_panel
 )
 

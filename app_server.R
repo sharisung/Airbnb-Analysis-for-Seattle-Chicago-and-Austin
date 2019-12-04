@@ -4,9 +4,15 @@ library(dplyr)
 library(tidyr)
 library(leaflet)
 library(ggplot2)
+library(scales)
 
 seattle_big_listing <- read.csv("data/big_seattle_listings.csv",
                                 stringsAsFactors = FALSE)
+
+data <- read.csv("seattle_listings.csv", stringsAsFactors = FALSE)
+plot_info <- data %>%
+    group_by(neighbourhood_group) %>%
+    summarise(total = mean(price))
 
 server <- function(input, output) {
     output$seattle_big_listing <- seattle_big_listing
@@ -33,4 +39,27 @@ server <- function(input, output) {
             fillOpacity = 0.5,
         )
     })
+     
+    #Building Bar Chart
+    select_neighbourhood <- reactive ({
+        new_data <- plot_info %>%
+            filter(neighbourhood_group == input$checkGroup)
+        return(new_data)
+    })
+    
+    output$bar <- renderPlotly({
+        bar_chart <- ggplot(select_neighbourhood()) +
+            geom_col(mapping = aes(x = neighbourhood_group,
+                                   y = total)) +
+            labs(x = "Neighbourhoods",
+                 y = "Average Price Per Night",
+                 title = "Comparing Average Price Per Night In Different Neighbourhoods") +
+            scale_fill_manual(values = c("steelblue4", "steelblue4", "tan1",
+                                         "khaki1"))
+        ggplotly(bar_chart)
+    })
+    output$conclusion <- renderUI ({
+        HTML(markdown::markdownToHTML(knit("conclusion.Rmd", quiet = TRUE)))
+    })
+
 }
