@@ -1,5 +1,5 @@
 ---
-title: "Conclusion"
+title: "conclusion"
 
 ---
 
@@ -10,22 +10,14 @@ These are the major findings from each visualizations
 
 <br>
 
-#### Interactive Map of Seattle Takeaways
-*
-*
-*
-
-<br>
-
-#### Average Price In Neighbourhoods Takeaways
+#### Average Price In Neighbourhoods In Seattle Takeaways
 * Downtown Seattle has the highest average price pernight of 288 comparing against all other neighbourhoods
 * University District has the lowest average price per night of 104 comparing against all other neighbourhoods
 * The average price per night in most neighbourhoods range between 100 to 200. 
 
 <br>
 
-#### XXXX Takewaays
-*
-*
-*
-
+#### Average Price In Neighbourhoods In Chicago Takeaways
+* Fuller Park has the highest average price pernight of 190.5 comparing against all other neighbourhoods.
+* Riverdale has the lowest average price per night of 22 comparing against other neighbourhoods.
+* Unlike Seattle, all neighbourhoods in Chicago have a average price pernight of under 200. 
